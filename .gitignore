@@ -1,0 +1,13 @@
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+.vscode
+
+*.pem
+.DS_STORE
