@@ -9,3 +9,7 @@ output "ec2_id" {
 output "ebs_vol_id {
   value = aws_ebs_volume.ebs_vol_01
 }
+
+output "ec2_info" {
+ value = module.ec2_instance
+}
