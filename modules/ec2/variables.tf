@@ -10,7 +10,6 @@ variable "subnet_id" {
 
 variable "key_name" {
   type    = any
-  default = ["$module.key_gen.key_pair_key_name"]
 }
 
 variable "security_group" {
