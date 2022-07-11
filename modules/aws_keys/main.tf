@@ -13,7 +13,8 @@ module "key_pair" {
 resource "local_file" "created_keypair_to_local" {
   content         = tls_private_key.rsa.private_key_pem
   file_permission = "400"
-  filename        = "tfkey.pem"
+  #filename        = "tfkey.pem"
+ filename = "${module.key_pair.key_pair_key_name}.pem"
 }
 
 
