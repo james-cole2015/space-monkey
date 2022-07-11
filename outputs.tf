@@ -10,3 +10,6 @@ output "public_sn0_id" {
   value = module.networking.vpc.public_subnets[0]
 }
 
+output "ec2_pub_ip" {
+  value = module.ec2.ec2_public_ip
+}
