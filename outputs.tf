@@ -13,3 +13,11 @@ output "public_sn0_id" {
 output "ec2_pub_ip" {
   value = module.ec2.ec2_public_ip
 }
+
+output "ssh_string" {
+value = "ssh ubuntu@${module.ec2.ec2_public_ip} -i tfkey.pem"
+}
+
+output "ssh_string1" {
+value = "ssh ubuntu@${module.ec2.ec2_public_ip} -i ${module.key_gen.key_name}.pem"
+}
