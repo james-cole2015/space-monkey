@@ -21,7 +21,8 @@ module "ec2_instance" {
 }
 
 resource "aws_ebs_volume" "ebs_vol_01" {
-  availability_zone = "us-east-1a"
+  #availability_zone = "us-east-1a"
+  availability_zone = data.aws_availability_zones.available.names[0]
   size              = 16
   encrypted = true
 
@@ -34,4 +35,8 @@ resource "aws_volume_attachment" "ebs_att" {
   device_name = "/dev/sdh"
   volume_id   = aws_ebs_volume.ebs_vol_01.id
   instance_id = module.ec2_instance.id
+}
+
+data "aws_availability_zones" "available" {
+  state = "available"
 }
