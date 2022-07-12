@@ -68,7 +68,7 @@ resource "aws_security_group" "allow_http" {
 resource "aws_security_group" "allow_https" {
   name        = "allow_https"
   description = "allow https traffic"
-  vpc_id      = module.vpc.vpc_id
+  vpc_id      = ["${chomp(data.http.terraform_ip.body)}/32"]
 
   ingress {
     description = "https from the internet"
@@ -88,4 +88,8 @@ resource "aws_security_group" "allow_https" {
   tags = {
     Name = "JasperSecurityGroup"
   }
+}
+
+data "http" "terraform_ip" {
+  url = "http://ipv4.icanhazip.com"
 }
