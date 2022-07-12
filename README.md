@@ -1,5 +1,5 @@
 # space-monkey
-This is the next iteration from [terraform_repo](https://github.com/james-cole2015/terraform_repo.git). I'll demonstrate additional skills through adding some features and security to the inital configuration.
+This is the next iteration of terraform configuration from [terraform_repo](https://github.com/james-cole2015/terraform_repo.git). I'll demonstrate additional skills through adding some features and security to the inital configuration.
 
 
 ### Repo Goals: 
