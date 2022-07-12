@@ -50,7 +50,7 @@ resource "aws_security_group" "allow_http" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["${chomp(data.http.terraform_ip.body)}/32"]
   }
 
   egress {
@@ -68,7 +68,7 @@ resource "aws_security_group" "allow_http" {
 resource "aws_security_group" "allow_https" {
   name        = "allow_https"
   description = "allow https traffic"
-  vpc_id      = ["${chomp(data.http.terraform_ip.body)}/32"]
+  vpc_id      = module.vpc.vpc_id
 
   ingress {
     description = "https from the internet"
