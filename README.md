@@ -9,6 +9,7 @@ This is the next iteration of terraform configuration from [terraform_repo](http
 - [ ] Add S3 bucket
 - [x] Output EC2 public IP address
 - [x] Secure SSH by limiting to hosted IP
+- [ ] Add security through a second EC2 instance acting as a bastion host
 
 ### High Level Commits: 
 - Added an EBS volume and attached it to the EC2 instance
