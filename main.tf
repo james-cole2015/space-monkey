@@ -23,3 +23,14 @@ module "s3-bucket" {
   version = "3.3.0"
   # insert the 7 required variables here
 }
+
+
+module "ec2_bastion" {
+  source         = "./modules/node_ec2"
+  vpc            = module.networking.vpc.vpc_id
+  #create seperate key for bastion host
+  key_name       = module.key_gen.key_name
+  subnet_id      = module.networking.vpc.public_subnets[0]
+  security_group = [module.networking.bastion-host-sg.id]
+  repo-name = var.repo-name
+}

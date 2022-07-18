@@ -2,7 +2,7 @@ module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 4.0"
 
-  name = "${var.repo-name}-instance"
+  name = "${var.repo-name}-bastion-instance"
 
   ami                    = "ami-0439517b5e436bdab"
   instance_type          = "t2.micro"
@@ -18,7 +18,7 @@ module "ec2_instance" {
     Terraform   = "true"
     Environment = "dev"
     Repo_Name = "${var.repo-name}"
-    Function = "WebServer"
+    Function = "Bastion Host"
   }
 }
 

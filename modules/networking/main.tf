@@ -16,7 +16,7 @@ module "vpc" {
 
 resource "aws_security_group" "webserver-sg" {
   name        = "webserver-sg"
-  description = "Allow SSH inbound traffic"
+  description = "Allow webserver traffic"
   vpc_id      = module.vpc.vpc_id
 
   ingress {
@@ -24,7 +24,7 @@ resource "aws_security_group" "webserver-sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${chomp(data.http.terraform_ip.body)}/32"]
+    cidr_blocks = var.ec2_node_cidr
   }
 
   egress {
@@ -52,7 +52,7 @@ resource "aws_security_group" "webserver-sg" {
   tags = {
     Name = "${var.repo-name}-SG"
   }
-ingress {
+  ingress {
     description = "https from the internet"
     from_port   = 443
     to_port     = 443
@@ -68,6 +68,60 @@ ingress {
   }
 }
 
+resource "aws_security_group" "bastion-host-sg" {
+  name        = "bastion-host-sg"
+  description = "Allow bastion host traffic"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress {
+    description = "SSH from the internet"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["${chomp(data.http.terraform_ip.body)}/32"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  /*
+  ingress {
+    description = "http from the internet"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  */
+  tags = {
+    Name = "${var.repo-name}-SG"
+  }
+  ingress {
+    description = "https from the internet"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
 
 
 data "http" "terraform_ip" {
