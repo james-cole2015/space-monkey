@@ -17,3 +17,7 @@ output "ec2_info" {
 output "ebs_info" {
 value = aws_ebs_volume.ebs_vol_01
 }
+
+output "ec2_tags" {
+value = module.ec2_instance.tags_all
+}

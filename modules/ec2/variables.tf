@@ -15,3 +15,7 @@ variable "key_name" {
 variable "security_group" {
   type = any
 }
+
+variable "repo-name" {
+  type = string
+  }

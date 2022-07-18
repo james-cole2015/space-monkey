@@ -18,3 +18,7 @@ output "ssh_string1" {
   value = "ssh ubuntu@${module.ec2.ec2_public_ip} -i ${module.key_gen.key_name}.pem"
 }
 
+output "ec2_tags" {
+  value = module.ec2.ec2_tags
+}
+
