@@ -6,7 +6,7 @@ This is the next iteration of terraform configuration from [terraform_repo](http
 - [ ] Refactor Terraform code into more efficient security group rules
 - [ ] Create load balancer and auto-scaling group to deploy more instances to run webserver
 - [x] Add in EBS Volume
-- [ ] Add S3 bucket
+- [X] Add S3 bucket
 - [x] Output EC2 public IP address
 - [x] Secure SSH by limiting to hosted IP
 - [ ] Add security through a second EC2 instance acting as a bastion host
@@ -17,3 +17,5 @@ This is the next iteration of terraform configuration from [terraform_repo](http
 - Add an output to display EC2 public IPv4 address
 - Added an output string to make copy/paste easier
   - Added the ssh command required to log into newly created infrastructure
+- Added an S3 bucket (private, monitoring enabled)
+- Added repo-name variable in root and all modules
