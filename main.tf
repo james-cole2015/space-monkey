@@ -15,3 +15,8 @@ module "key_gen" {
 }
 
 
+module "s3-bucket" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.3.0"
+  # insert the 7 required variables here
+}

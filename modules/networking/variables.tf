@@ -17,3 +17,7 @@ variable "vpc_name" {
   type    = string
   default = "JasperMainNet"
 }
+
+variable "repo-name" {
+  type = string
+}
