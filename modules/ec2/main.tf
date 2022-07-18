@@ -2,7 +2,7 @@ module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 4.0"
 
-  name = "${repo-name}-instance"
+  name = "${var.repo-name}-instance"
 
   ami                    = "ami-0439517b5e436bdab"
   instance_type          = "t2.micro"
@@ -17,7 +17,7 @@ module "ec2_instance" {
   tags = {
     Terraform   = "true"
     Environment = "dev"
-    Repo_Name = "${repo-name}"
+    Repo_Name = "${var.repo-name}"
   }
 }
 
@@ -28,7 +28,7 @@ resource "aws_ebs_volume" "ebs_vol_01" {
   encrypted = true
 
   tags = {
-    Repo_Name = "${repo-name}"
+    Repo_Name = "${var.repo-name}"
   }
 }
 

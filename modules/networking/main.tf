@@ -50,7 +50,7 @@ resource "aws_security_group" "webserver-sg" {
   }
 
   tags = {
-    Name = "${repo-name}-SG"
+    Name = "${var.repo-name}-SG"
   }
 ingress {
     description = "https from the internet"
