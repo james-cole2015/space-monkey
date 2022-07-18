@@ -36,7 +36,7 @@ resource "aws_ebs_volume" "ebs_vol_01" {
 resource "aws_volume_attachment" "ebs_att" {
   device_name = "/dev/sdh"
   volume_id   = aws_ebs_volume.ebs_vol_01.id
-  instance_id = module.ec2_instance.id
+  instance_id = module.ec2_bastion.id
 }
 
 data "aws_availability_zones" "available" {
