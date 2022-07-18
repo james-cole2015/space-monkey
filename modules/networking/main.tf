@@ -14,8 +14,8 @@ module "vpc" {
 
 }
 
-resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh"
+resource "aws_security_group" "webserver-sg" {
+  name        = "webserver-sg"
   description = "Allow SSH inbound traffic"
   vpc_id      = module.vpc.vpc_id
 
@@ -52,41 +52,7 @@ resource "aws_security_group" "allow_ssh" {
   tags = {
     Name = "Jaspers_SecurityGroup"
   }
-
-}
-
-/*
-resource "aws_security_group" "allow_http" {
-  name        = "allow_http"
-  description = "allow http traffic"
-  vpc_id      = module.vpc.vpc_id
-
-  ingress {
-    description = "http from the internet"
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "JasperSecurityGroup"
-  }
-}
-*/
-resource "aws_security_group" "allow_https" {
-  name        = "allow_https"
-  description = "allow https traffic"
-  vpc_id      = module.vpc.vpc_id
-
-  ingress {
+ingress {
     description = "https from the internet"
     from_port   = 443
     to_port     = 443
@@ -100,11 +66,9 @@ resource "aws_security_group" "allow_https" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  tags = {
-    Name = "JasperSecurityGroup"
-  }
 }
+
+
 
 data "http" "terraform_ip" {
   url = "http://ipv4.icanhazip.com"
