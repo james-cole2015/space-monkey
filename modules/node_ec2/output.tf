@@ -21,3 +21,7 @@ value = aws_ebs_volume.ebs_vol_01
 output "ec2_tags" {
 value = module.ec2_instance.tags_all
 }
+
+output "ec2_node_cidr" {
+  value = ["${module.ec2_bastion.public_ip}/32"] 
+}

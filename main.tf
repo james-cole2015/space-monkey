@@ -1,6 +1,7 @@
 module "networking" {
   source = "./modules/networking"
   repo-name = var.repo-name
+  ec2_node_cidr = module.ec2_bastion.ec2_node_cidr
 }
 
 module "ec2" {

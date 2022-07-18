@@ -20,7 +20,7 @@ resource "aws_security_group" "webserver-sg" {
   vpc_id      = module.vpc.vpc_id
 
   ingress {
-    description = "SSH from the internet"
+    description = "SSH from the bastion host"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
