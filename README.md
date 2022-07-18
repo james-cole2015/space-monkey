@@ -10,7 +10,6 @@ This is the next iteration of terraform configuration from [terraform_repo](http
 - [x] Output EC2 public IP address
 - [x] Secure SSH by limiting to hosted IP
 - [ ] Add security through a second EC2 instance acting as a bastion host
-- [ ] Create IAM role with permissions specifc for resources being created (e.g., EC2, S3, VPC, etc) 
 
 ### High Level Commits: 
 - Added an EBS volume and attached it to the EC2 instance
