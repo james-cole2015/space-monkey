@@ -8,14 +8,14 @@ module "vpc" {
   private_subnets              = var.private_sn
   public_subnets               = var.public_sn
   create_database_subnet_group = true
-  enable_nat_gateway           = true
+  #enable_nat_gateway           = true
   single_nat_gateway           = true
 
 
 }
 
-resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh"
+resource "aws_security_group" "webserver-sg" {
+  name        = "webserver-sg"
   description = "Allow SSH inbound traffic"
   vpc_id      = module.vpc.vpc_id
 
@@ -34,17 +34,6 @@ resource "aws_security_group" "allow_ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = {
-    Name = "Jaspers_SecurityGroup"
-  }
-
-}
-
-resource "aws_security_group" "allow_http" {
-  name        = "allow_http"
-  description = "allow http traffic"
-  vpc_id      = module.vpc.vpc_id
-
   ingress {
     description = "http from the internet"
     from_port   = 80
@@ -61,16 +50,9 @@ resource "aws_security_group" "allow_http" {
   }
 
   tags = {
-    Name = "JasperSecurityGroup"
+    Name = "Jaspers_SecurityGroup"
   }
-}
-
-resource "aws_security_group" "allow_https" {
-  name        = "allow_https"
-  description = "allow https traffic"
-  vpc_id      = module.vpc.vpc_id
-
-  ingress {
+ingress {
     description = "https from the internet"
     from_port   = 443
     to_port     = 443
@@ -84,11 +66,9 @@ resource "aws_security_group" "allow_https" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  tags = {
-    Name = "JasperSecurityGroup"
-  }
 }
+
+
 
 data "http" "terraform_ip" {
   url = "http://ipv4.icanhazip.com"
