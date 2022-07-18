@@ -2,6 +2,6 @@ output "vpc" {
   value = module.vpc
 }
 
-output "allow_webserver-sg" {
+output "webserver-sg" {
   value = aws_security_group.webserver-sg
 }
