@@ -1,6 +1,6 @@
 module "networking" {
-  source = "./modules/networking"
-  repo-name = var.repo-name
+  source        = "./modules/networking"
+  repo-name     = var.repo-name
   ec2_node_cidr = module.ec2_bastion.ec2_node_cidr
 }
 
@@ -10,11 +10,11 @@ module "ec2" {
   key_name       = module.key_gen.key_name
   subnet_id      = module.networking.vpc.public_subnets[0]
   security_group = [module.networking.webserver-sg.id]
-  repo-name = var.repo-name
+  repo-name      = var.repo-name
 }
 
 module "key_gen" {
-  source = "./modules/aws_keys"
+  source    = "./modules/aws_keys"
   repo-name = var.repo-name
 }
 
@@ -27,11 +27,11 @@ module "s3-bucket" {
 
 
 module "ec2_bastion" {
-  source         = "./modules/node_ec2"
-  vpc            = module.networking.vpc.vpc_id
+  source = "./modules/node_ec2"
+  vpc    = module.networking.vpc.vpc_id
   #create seperate key for bastion host
   key_name       = module.key_gen.key_name
   subnet_id      = module.networking.vpc.public_subnets[0]
   security_group = [module.networking.bastion-host-sg.id]
-  repo-name = var.repo-name
+  repo-name      = var.repo-name
 }
