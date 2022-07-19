@@ -22,7 +22,7 @@ output "ec2_tags" {
   value = module.ec2_instance.tags_all
 }
 
-output "launch-template-id" {
+output "launch-template-info" {
   value = aws_launch_template.webserver-template
 }
 
