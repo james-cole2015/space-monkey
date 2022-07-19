@@ -11,14 +11,14 @@ module "ec2_instance" {
   vpc_security_group_ids = var.security_group
   subnet_id              = var.subnet_id
   user_data              = file("ws_bootstrap.sh")
-  
+
 
 
   tags = {
     Terraform   = "true"
     Environment = "dev"
-    Repo_Name = "${var.repo-name}"
-    Function = "WebServer"
+    Repo_Name   = "${var.repo-name}"
+    Function    = "WebServer"
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_ebs_volume" "ebs_vol_01" {
   #availability_zone = "us-east-1a"
   availability_zone = data.aws_availability_zones.available.names[0]
   size              = 16
-  encrypted = true
+  encrypted         = true
 
   tags = {
     Repo_Name = "${var.repo-name}"
@@ -47,7 +47,7 @@ resource "aws_launch_template" "webserver-template" {
   name = "${var.repo-name}-launch-template"
 
   instance_type = "t2.micro"
-  key_name = var.key_name
+  key_name      = var.key_name
   monitoring {
     enabled = true
   }
@@ -56,6 +56,6 @@ resource "aws_launch_template" "webserver-template" {
   }
   tags = {
     Repo_Name = "${var.repo-name}-webserver-launch-template"
-      }
-  user_data = file("ws_bootstrap.sh")
+  }
+  user_data = filebase64("ws_bootstrap.sh")
 }
