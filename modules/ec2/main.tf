@@ -54,8 +54,12 @@ resource "aws_launch_template" "webserver-template" {
   placement {
     availability_zone = data.aws_availability_zones.available.names[0]
   }
-  tags = {
-    Repo_Name = "${var.repo-name}-webserver-launch-template"
+  tag_specifications {
+    Terraform   = "true"
+    Environment = "dev"
+    Repo_Name   = "${var.repo-name}"
+    Function    = "WebServer"
   }
   user_data = filebase64("ws_bootstrap.sh")
+  vpc_security_group_ids = var.security_group
 }
