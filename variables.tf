@@ -8,7 +8,7 @@ variable "subnet_id" {
 }
 
 variable "repo-name" {
-  type = string
+  type    = string
   default = "space-monkey"
-  
+
 }

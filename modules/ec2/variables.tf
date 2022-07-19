@@ -9,7 +9,7 @@ variable "subnet_id" {
 }
 
 variable "key_name" {
-  type    = any
+  type = any
 }
 
 variable "security_group" {
@@ -18,4 +18,4 @@ variable "security_group" {
 
 variable "repo-name" {
   type = string
-  }
+}
