@@ -63,6 +63,7 @@ resource "aws_launch_template" "webserver-template" {
     Function    = "WebServer"
     }
   }
+default_version = 2
   user_data = filebase64("ws_bootstrap.sh")
   vpc_security_group_ids = var.security_group
 }
