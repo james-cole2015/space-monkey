@@ -34,9 +34,3 @@ module "ec2_bastion" {
   security_group = [module.networking.bastion-host-sg.id]
   repo-name      = var.repo-name
 }
-
-module "autoscaling" {
-  source  = "terraform-aws-modules/autoscaling/aws"
-  version = "6.5.1"
-  # insert the 39 required variables here
-}

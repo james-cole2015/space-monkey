@@ -22,7 +22,7 @@ output "ec2_tags" {
   value = module.ec2.ec2_tags
 }
 
-output "launch-template-id" {
-  value = module.ec2.launch-template-id.id
+output "launch-template-info" {
+  value = module.ec2.launch-template-info.name
 }
 
