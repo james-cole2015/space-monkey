@@ -44,7 +44,7 @@ data "aws_availability_zones" "available" {
 }
 
 resource "aws_launch_template" "webserver-template" {
-  name = "${repo-name}-launch-template"
+  name = "${var.repo-name}-launch-template"
 
   instance_type = "t2.micro"
   key_name = var.key_name
@@ -55,7 +55,7 @@ resource "aws_launch_template" "webserver-template" {
     availability_zone = data.aws_availability_zones.available.names[0]
   }
   tags = {
-    Repo_Name = "${repo-name}-webserver-launch-template"
+    Repo_Name = "${var.repo-name}-webserver-launch-template"
       }
   user_data = file("ws_bootstrap.sh")
 }
