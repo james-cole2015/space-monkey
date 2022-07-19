@@ -19,3 +19,4 @@ This is the next iteration of terraform configuration from [terraform_repo](http
   - Added the ssh command required to log into newly created infrastructure
 - Added an S3 bucket (private, monitoring enabled)
 - Added repo-name variable in root and all modules
+- Created aws_launch_template resource
