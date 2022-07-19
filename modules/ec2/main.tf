@@ -42,3 +42,20 @@ resource "aws_volume_attachment" "ebs_att" {
 data "aws_availability_zones" "available" {
   state = "available"
 }
+
+resource "aws_launch_template" "webserver-template" {
+  name = "${repo-name}-launch-template"
+
+  instance_type = "t2.micro"
+  key_name = var.key_name
+  monitoring {
+    enabled = true
+  }
+  placement {
+    availability_zone = data.aws_availability_zones.available.names[0]
+  }
+  tags = {
+    Repo_Name = "${repo-name}-webserver-launch-template"
+      }
+  user_data = file("ws_bootstrap.sh")
+}
