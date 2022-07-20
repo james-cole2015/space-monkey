@@ -22,5 +22,5 @@ variable "repo-name" {
 
 variable "lt-instance-type" {
   type    = string
-  default = "t2.micro"
+  default = "t2.small"
 }
