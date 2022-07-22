@@ -18,12 +18,10 @@ module "key_gen" {
   repo-name = var.repo-name
 }
 
-
 module "s3-bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "3.3.0"
 }
-
 
 module "ec2_bastion" {
   source = "./modules/node_ec2"
