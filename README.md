@@ -4,7 +4,6 @@ This is the next iteration of terraform configuration from [terraform_repo](http
 
 ### Repo Goals: 
 - [ ] Refactor Terraform code into more efficient security group rules
-- [ ] Create load balancer and auto-scaling group to deploy more instances to run webserver
 - [x] Add in EBS Volume
 - [X] Add S3 bucket
 - [x] Output EC2 public IP address
@@ -19,4 +18,3 @@ This is the next iteration of terraform configuration from [terraform_repo](http
   - Added the ssh command required to log into newly created infrastructure
 - Added an S3 bucket (private, monitoring enabled)
 - Added repo-name variable in root and all modules
-- Created aws_launch_template resource
