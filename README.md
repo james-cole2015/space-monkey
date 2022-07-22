@@ -2,6 +2,7 @@
 This is the next iteration of terraform configuration from [terraform_repo](https://github.com/james-cole2015/terraform_repo.git). I'll demonstrate additional skills through adding some features and security to the inital configuration. The goals below are not a complete list of goals. I will add what I consider minor goals to this repo. When I decide that I've evolved the design enough, I'll close the repo and start another iteration of the repo. 
 
 
+
 ### Repo Goals: 
 - [x] Add in EBS Volume
 - [X] Add S3 bucket
@@ -17,3 +18,7 @@ This is the next iteration of terraform configuration from [terraform_repo](http
   - Added the ssh command required to log into newly created infrastructure
 - Added an S3 bucket (private, monitoring enabled)
 - Added repo-name variable in root and all modules
+
+![Final Architecture Diagram](https://github.com/james-cole2015/space-monkey/blob/main/space-monkey-final.jpg)[^1]
+
+[^1]: [Image generated from Terraform Visual](https://hieven.github.io/terraform-visual/)
