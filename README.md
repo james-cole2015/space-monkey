@@ -3,7 +3,6 @@ This is the next iteration of terraform configuration from [terraform_repo](http
 
 
 ### Repo Goals: 
-- [ ] Refactor Terraform code into more efficient security group rules
 - [x] Add in EBS Volume
 - [X] Add S3 bucket
 - [x] Output EC2 public IP address
