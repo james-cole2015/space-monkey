@@ -8,7 +8,7 @@ module "ec2" {
   source         = "./modules/ec2"
   vpc            = module.networking.vpc.vpc_id
   key_name       = module.key_gen.key_name
-  subnet_id      = module.networking.vpc.private_subnets[0]
+  subnet_id      = module.networking.vpc.public_subnets[0]
   security_group = [module.networking.webserver-sg.id]
   repo-name      = var.repo-name
 }
