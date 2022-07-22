@@ -19,8 +19,3 @@ variable "security_group" {
 variable "repo-name" {
   type = string
 }
-
-variable "lt-instance-type" {
-  type    = string
-  default = "t2.small"
-}
